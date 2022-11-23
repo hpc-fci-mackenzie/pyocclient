@@ -502,9 +502,12 @@ class Client(object):
         :raises: HTTPResponseError in case an HTTP error status was returned
         """
         remote_path = self._normalize_path(remote_path)
+        headers = {}
+        headers['X-Requested-With'] = 'XMLHttpRequest'
         res = self._session.get(
             self._webdav_url + parse.quote(self._encode_string(remote_path)),
-            stream=True
+            stream=True,
+            headers=headers
         )
         if res.status_code == 200:
             if local_file is None:
