@@ -392,7 +392,7 @@ class Client(object):
         url_components = parse.urlparse(self.url)
         self._davpath = url_components.path + 'public.php/webdav'
         self._webdav_url = self.url + 'public.php/webdav'
-    
+
     @classmethod
     def from_public_link(cls, public_link, folder_password='', **kwargs):
         public_link_components = parse.urlparse(public_link)
