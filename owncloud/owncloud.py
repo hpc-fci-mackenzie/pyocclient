@@ -1800,6 +1800,9 @@ class Client(object):
         contains it, or True if the operation succeeded, False
         if it didn't
         """
+        headers = kwargs.get('headers')
+        if not headers:
+            kwargs['headers'] = {}
         kwargs['headers']['X-Requested-With'] = 'XMLHttpRequest'
         if self._debug:
             print('DAV request: %s %s' % (method, path))
